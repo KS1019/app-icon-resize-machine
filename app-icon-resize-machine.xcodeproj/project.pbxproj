@@ -3,22 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		7C39C93B25BEB7AA000AE63E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C39C93A25BEB7AA000AE63E /* main.swift */; };
+		7C39C94225BEB827000AE63E /* app-icon-resize-machine in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C39C93725BEB7AA000AE63E /* app-icon-resize-machine */; };
+		7C39C94925BEB8FD000AE63E /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7C39C94825BEB8FD000AE63E /* ArgumentParser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		7C39C93525BEB7AA000AE63E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			buildActionMask = 12;
+			dstPath = /usr/local/bin;
 			dstSubfolderSpec = 0;
 			files = (
+				7C39C94225BEB827000AE63E /* app-icon-resize-machine in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -32,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C39C94925BEB8FD000AE63E /* ArgumentParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +82,9 @@
 			dependencies = (
 			);
 			name = "app-icon-resize-machine";
+			packageProductDependencies = (
+				7C39C94825BEB8FD000AE63E /* ArgumentParser */,
+			);
 			productName = "app-icon-resize-machine";
 			productReference = 7C39C93725BEB7AA000AE63E /* app-icon-resize-machine */;
 			productType = "com.apple.product-type.tool";
@@ -105,6 +112,9 @@
 				Base,
 			);
 			mainGroup = 7C39C92E25BEB7AA000AE63E;
+			packageReferences = (
+				7C39C94725BEB8FD000AE63E /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+			);
 			productRefGroup = 7C39C93825BEB7AA000AE63E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -285,6 +295,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7C39C94725BEB8FD000AE63E /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7C39C94825BEB8FD000AE63E /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C39C94725BEB8FD000AE63E /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7C39C92F25BEB7AA000AE63E /* Project object */;
 }
