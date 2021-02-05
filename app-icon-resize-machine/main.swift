@@ -13,14 +13,9 @@ struct ResizeMachine: ParsableCommand {
     static var configuration: CommandConfiguration = CommandConfiguration(
         commandName: "ResizeMachine",
         abstract: "Resizes .png file and generates Appicon file",
-        discussion:
-            """
-ddddd
-""",
+        discussion: "This command takes .png file as an input and outptus .appicon file",
         version: "0.1.0",
         shouldDisplay: true,
-//        subcommands: ,
-//        defaultSubcommand: ,
         helpNames: [.long, .short])
     
     @Argument(help: "An .png file to be used for the Appicon file")
