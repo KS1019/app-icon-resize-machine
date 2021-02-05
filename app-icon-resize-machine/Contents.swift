@@ -10,16 +10,18 @@ import Foundation
 struct Contents: Codable {
     var images: [Image]
     var info: Info
+    
+    struct Image: Codable {
+        var idiom: String
+        var size: String
+        var scale: String
+        var filename: String
+    }
+    
+    struct Info: Codable {
+        var version: Int
+        var author: String
+    }
 }
 
-struct Image: Codable {
-    var idiom: String
-    var size: String
-    var scale: String
-    var filename: String
-}
 
-struct Info: Codable {
-    var version: String
-    var author: String
-}
