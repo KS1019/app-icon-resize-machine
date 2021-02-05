@@ -19,11 +19,11 @@ struct ResizeMachine: ParsableCommand {
         helpNames: [.long, .short])
     
     @Argument(help: "An .png file to be used for the Appicon file")
-    var iconFile: String
+    var iconFilePath: String
     
     func readImageFile() {
         let currentPath = "file://" + FileManager.default.currentDirectoryPath + "/"
-        let url = URL(string:currentPath  + iconFile)!
+        let url = URL(string:currentPath  + iconFilePath)!
         print(url)
         
         do {
