@@ -52,7 +52,7 @@ ddddd
         }
     }
     
-    func readJSON() {
+    func readAndWriteJSON() {
         print("Starting \(#function)")
 
         let data = """
@@ -186,17 +186,22 @@ ddddd
 }
 """.data(using: .utf8)!
         print("data:\n\(data)")
-        let json = try! JSONDecoder().decode(Contents.self, from: data)
-        json.images.forEach { image in
-            print("Image : \(image.idiom) and \(image.filename)")
-        }
+        var json = try! JSONDecoder().decode(Contents.self, from: data)
+        json.info.author = "Kotaro Suto"
+        json.info.version += 1
         print("Ending \(#function)")
+        
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        let encoded = try! encoder.encode(json)
+        let currentPath = "file://" + FileManager.default.currentDirectoryPath + "/"
+        try! encoded.write(to: URL(string: currentPath + "test")!)
     }
     
     func run() throws {
         print("Hello, World!")
         //readImageFile()
-        readJSON()
+        readAndWriteJSON()
     }
 }
 
