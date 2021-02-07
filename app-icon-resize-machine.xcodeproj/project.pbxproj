@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		7C23249625CD4188001808B0 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C23249525CD4188001808B0 /* Contents.swift */; };
 		7C2324A225CD6DA5001808B0 /* ImageSizeConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2324A125CD6DA5001808B0 /* ImageSizeConfig.swift */; };
+		7C2324E525D0108B001808B0 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2324E425D0108B001808B0 /* NSImageExtension.swift */; };
+		7C2324E925D010D8001808B0 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2324E825D010D8001808B0 /* DataExtension.swift */; };
+		7C2324EC25D01119001808B0 /* NSBitmapImageRepExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2324EB25D01119001808B0 /* NSBitmapImageRepExtension.swift */; };
 		7C39C93B25BEB7AA000AE63E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C39C93A25BEB7AA000AE63E /* main.swift */; };
 		7C39C94225BEB827000AE63E /* app-icon-resize-machine in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C39C93725BEB7AA000AE63E /* app-icon-resize-machine */; };
 		7C39C94925BEB8FD000AE63E /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7C39C94825BEB8FD000AE63E /* ArgumentParser */; };
@@ -30,6 +33,9 @@
 /* Begin PBXFileReference section */
 		7C23249525CD4188001808B0 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		7C2324A125CD6DA5001808B0 /* ImageSizeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeConfig.swift; sourceTree = "<group>"; };
+		7C2324E425D0108B001808B0 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
+		7C2324E825D010D8001808B0 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
+		7C2324EB25D01119001808B0 /* NSBitmapImageRepExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSBitmapImageRepExtension.swift; sourceTree = "<group>"; };
 		7C39C93725BEB7AA000AE63E /* app-icon-resize-machine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "app-icon-resize-machine"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C39C93A25BEB7AA000AE63E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,6 +52,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C2324E325D0105D001808B0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7C2324E425D0108B001808B0 /* NSImageExtension.swift */,
+				7C2324EB25D01119001808B0 /* NSBitmapImageRepExtension.swift */,
+				7C2324E825D010D8001808B0 /* DataExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7C39C92E25BEB7AA000AE63E = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +81,7 @@
 		7C39C93925BEB7AA000AE63E /* app-icon-resize-machine */ = {
 			isa = PBXGroup;
 			children = (
+				7C2324E325D0105D001808B0 /* Extensions */,
 				7C39C93A25BEB7AA000AE63E /* main.swift */,
 				7C2324A125CD6DA5001808B0 /* ImageSizeConfig.swift */,
 				7C23249525CD4188001808B0 /* Contents.swift */,
@@ -137,7 +154,10 @@
 			files = (
 				7C2324A225CD6DA5001808B0 /* ImageSizeConfig.swift in Sources */,
 				7C39C93B25BEB7AA000AE63E /* main.swift in Sources */,
+				7C2324E525D0108B001808B0 /* NSImageExtension.swift in Sources */,
 				7C23249625CD4188001808B0 /* Contents.swift in Sources */,
+				7C2324E925D010D8001808B0 /* DataExtension.swift in Sources */,
+				7C2324EC25D01119001808B0 /* NSBitmapImageRepExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
