@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7C23249625CD4188001808B0 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C23249525CD4188001808B0 /* Contents.swift */; };
+		7C2324A225CD6DA5001808B0 /* ImageSizeConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2324A125CD6DA5001808B0 /* ImageSizeConfig.swift */; };
 		7C39C93B25BEB7AA000AE63E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C39C93A25BEB7AA000AE63E /* main.swift */; };
 		7C39C94225BEB827000AE63E /* app-icon-resize-machine in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C39C93725BEB7AA000AE63E /* app-icon-resize-machine */; };
 		7C39C94925BEB8FD000AE63E /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7C39C94825BEB8FD000AE63E /* ArgumentParser */; };
@@ -28,8 +29,7 @@
 
 /* Begin PBXFileReference section */
 		7C23249525CD4188001808B0 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
-		7C23249D25CD4763001808B0 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
-		7C23249F25CD47B6001808B0 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Contents.json; path = "../../../Downloads/icon-PEKOCHAN/ios/AppIcon.appiconset/Contents.json"; sourceTree = "<group>"; };
+		7C2324A125CD6DA5001808B0 /* ImageSizeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeConfig.swift; sourceTree = "<group>"; };
 		7C39C93725BEB7AA000AE63E /* app-icon-resize-machine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "app-icon-resize-machine"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C39C93A25BEB7AA000AE63E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,14 +46,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7C23249825CD42D9001808B0 /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				7C23249D25CD4763001808B0 /* Contents.json */,
-			);
-			path = Test;
-			sourceTree = "<group>";
-		};
 		7C39C92E25BEB7AA000AE63E = {
 			isa = PBXGroup;
 			children = (
@@ -73,9 +65,8 @@
 		7C39C93925BEB7AA000AE63E /* app-icon-resize-machine */ = {
 			isa = PBXGroup;
 			children = (
-				7C23249F25CD47B6001808B0 /* Contents.json */,
-				7C23249825CD42D9001808B0 /* Test */,
 				7C39C93A25BEB7AA000AE63E /* main.swift */,
+				7C2324A125CD6DA5001808B0 /* ImageSizeConfig.swift */,
 				7C23249525CD4188001808B0 /* Contents.swift */,
 			);
 			path = "app-icon-resize-machine";
@@ -144,6 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C2324A225CD6DA5001808B0 /* ImageSizeConfig.swift in Sources */,
 				7C39C93B25BEB7AA000AE63E /* main.swift in Sources */,
 				7C23249625CD4188001808B0 /* Contents.swift in Sources */,
 			);

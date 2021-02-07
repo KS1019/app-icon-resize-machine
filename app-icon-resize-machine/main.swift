@@ -9,6 +9,12 @@ import Foundation
 import ArgumentParser
 import AppKit
 
+var basePNGFile: NSImage?
+var resizedPNGFiles: [NSImage]
+var imagesJSON: [Image] = []
+
+let currentPath = "file://" + FileManager.default.currentDirectoryPath + "/"
+
 struct ResizeMachine: ParsableCommand {
     static var configuration: CommandConfiguration = CommandConfiguration(
         commandName: "ResizeMachine",
@@ -19,184 +25,72 @@ struct ResizeMachine: ParsableCommand {
         helpNames: [.long, .short])
     
     @Argument(help: "An .png file to be used for the Appicon file")
-    var iconFilePath: String
+    var iconFileName: String
     
-    func readImageFile() {
-        let currentPath = "file://" + FileManager.default.currentDirectoryPath + "/"
-        let url = URL(string:currentPath  + iconFilePath)!
-        print(url)
-        
-        do {
-            let readData = try Data(contentsOf: url)
-            let image = NSImage(data: readData)
-            let resizedOne = image?.resized(to: NSSize(width: 100, height: 100))
-            do {
-                try resizedOne?.png?.write(to: URL(string: currentPath + "resizedOne.png")!)
-            } catch let error {
-                print(error)
-            }
-            let resizedTwo = image?.resized(to: NSSize(width: 200, height: 200))
-            do {
-                try resizedTwo?.png?.write(to: URL(string: currentPath + "resizedTwo.png")!)
-            } catch let error {
-                print(error)
-            }
-            print("read successfully: \(url)")
-        } catch let error {
-            print(error)
-        }
-    }
+    @Argument(help: "App name to be used in names of icon files")
+    var appName: String?
     
-    func readAndWriteJSON() {
-        print("Starting \(#function)")
+    @Argument(help: "Name to be used as an author")
+    var authorName: String?
 
-        let data = """
-{
-    "images":[
-        {
-            "idiom":"iphone",
-            "size":"20x20",
-            "scale":"2x",
-            "filename":"Icon-App-20x20@2x.png"
-        },
-        {
-            "idiom":"iphone",
-            "size":"20x20",
-            "scale":"3x",
-            "filename":"Icon-App-20x20@3x.png"
-        },
-        {
-            "idiom":"iphone",
-            "size":"29x29",
-            "scale":"1x",
-            "filename":"Icon-App-29x29@1x.png"
-        },
-        {
-            "idiom":"iphone",
-            "size":"29x29",
-            "scale":"2x",
-            "filename":"Icon-App-29x29@2x.png"
-        },
-        {
-            "idiom":"iphone",
-            "size":"29x29",
-            "scale":"3x",
-            "filename":"Icon-App-29x29@3x.png"
-        },
-        {
-            "idiom":"iphone",
-            "size":"40x40",
-            "scale":"2x",
-            "filename":"Icon-App-40x40@2x.png"
-        },
-        {
-            "idiom":"iphone",
-            "size":"40x40",
-            "scale":"3x",
-            "filename":"Icon-App-40x40@3x.png"
-        },
-        {
-            "idiom":"iphone",
-            "size":"60x60",
-            "scale":"2x",
-            "filename":"Icon-App-60x60@2x.png"
-        },
-        {
-            "idiom":"iphone",
-            "size":"60x60",
-            "scale":"3x",
-            "filename":"Icon-App-60x60@3x.png"
-        },
-        {
-            "idiom":"iphone",
-            "size":"76x76",
-            "scale":"2x",
-            "filename":"Icon-App-76x76@2x.png"
-        },
-        {
-            "idiom":"ipad",
-            "size":"20x20",
-            "scale":"1x",
-            "filename":"Icon-App-20x20@1x.png"
-        },
-        {
-            "idiom":"ipad",
-            "size":"20x20",
-            "scale":"2x",
-            "filename":"Icon-App-20x20@2x.png"
-        },
-        {
-            "idiom":"ipad",
-            "size":"29x29",
-            "scale":"1x",
-            "filename":"Icon-App-29x29@1x.png"
-        },
-        {
-            "idiom":"ipad",
-            "size":"29x29",
-            "scale":"2x",
-            "filename":"Icon-App-29x29@2x.png"
-        },
-        {
-            "idiom":"ipad",
-            "size":"40x40",
-            "scale":"1x",
-            "filename":"Icon-App-40x40@1x.png"
-        },
-        {
-            "idiom":"ipad",
-            "size":"40x40",
-            "scale":"2x",
-            "filename":"Icon-App-40x40@2x.png"
-        },
-        {
-            "idiom":"ipad",
-            "size":"76x76",
-            "scale":"1x",
-            "filename":"Icon-App-76x76@1x.png"
-        },
-        {
-            "idiom":"ipad",
-            "size":"76x76",
-            "scale":"2x",
-            "filename":"Icon-App-76x76@2x.png"
-        },
-        {
-            "idiom":"ipad",
-            "size":"83.5x83.5",
-            "scale":"2x",
-            "filename":"Icon-App-83.5x83.5@2x.png"
-        },
-        {
-          "size" : "1024x1024",
-          "idiom" : "ios-marketing",
-          "scale" : "1x",
-          "filename" : "ItunesArtwork@2x.png"
+    func createDir() {
+        let finalFilePath = currentPath + (appName ?? "App") + ".appiconset"
+        do {
+            try FileManager.default.createDirectory(at: URL(string: finalFilePath)!,
+                                                    withIntermediateDirectories: true, attributes: nil)
+        } catch let error {
+            print("Error : \(error)")
         }
-    ],
-    "info":{
-        "version":1,
-        "author":"makeappicon"
     }
-}
-""".data(using: .utf8)!
-        print("data:\n\(data)")
-        var json = try! JSONDecoder().decode(Contents.self, from: data)
-        json.info.author = "Kotaro Suto"
-        json.info.version += 1
-        print("Ending \(#function)")
-        
+    
+    func write(contents: Contents, to: URL) {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        let encoded = try! encoder.encode(json)
-        let currentPath = "file://" + FileManager.default.currentDirectoryPath + "/"
-        try! encoded.write(to: URL(string: currentPath + "test")!)
+        let encoded = try! encoder.encode(contents)
+        try! encoded.write(to: to)
+    }
+    
+    func writeJSON() {
+        let contents = Contents(images: imagesJSON, info: Info(version: 1, author: authorName ?? "App"))
+        write(contents: contents, to: URL(string: currentPath + "\(appName ?? "App").appiconset/" + "Contents.json")!)
     }
     
     func run() throws {
-        print("Hello, World!")
-        //readImageFile()
-        readAndWriteJSON()
+        basePNGFile = NSImage(contentsOf: URL(string: currentPath + iconFileName)!)
+        createDir()
+        let imageConfig = ImageGen(appName: (appName ?? ""), authorName: (authorName ?? ""))
+        for config in imageConfig.imageConfigs {
+            let size = config.size * config.scale
+            guard let resized = basePNGFile?.resized(to: NSSize(width: size, height: size)) else { print("Error");return }
+            let app: String = appName ?? "App" + "-"
+            var sizeAtrr: String
+            let scaleStr = String(format: "%.0f", config.scale)
+            let sizeStr = String(format: "%.0f", config.size)
+            var filename: String
+            if (config.size.truncatingRemainder(dividingBy: 1) == 0) {
+                sizeAtrr = "\(sizeStr)x\(sizeStr)" + "@\(scaleStr)x"
+                filename = "Icon-App-" + sizeAtrr + ".png"
+                imagesJSON.append(Image(idiom: config.idiom.rawValue,
+                                        size: "\(sizeStr)x\(sizeStr)",
+                                        scale: "\(scaleStr)x",
+                                        filename: filename))
+            } else {
+                sizeAtrr = "\(config.size)x\(config.size)" + "@\(scaleStr)x"
+                filename = "Icon-App-" + sizeAtrr + ".png"
+                imagesJSON.append(Image(idiom: config.idiom.rawValue,
+                                        size: "\(config.size)x\(config.size)",
+                                        scale: "\(scaleStr)x",
+                                        filename: filename))
+            }
+            do {
+                try resized.png?.write(to: URL(string: currentPath + "\(appName ?? "App").appiconset/" + filename)!)
+                print("Writing :\(URL(string: currentPath + "\(appName ?? "App").appiconset/" + filename)!.absoluteString)")
+            } catch let error {
+                print(error)
+            }
+        }
+        
+        writeJSON()
     }
 }
 
