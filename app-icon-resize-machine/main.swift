@@ -83,7 +83,6 @@ struct ResizeMachine: ParsableCommand {
             }
             do {
                 try resized.png?.write(to: URL(string: currentPath + "\(appName ?? "App").appiconset/" + filename)!)
-                print("Writing :\(URL(string: currentPath + "\(appName ?? "App").appiconset/" + filename)!.absoluteString)")
             } catch let error {
                 print(error)
             }

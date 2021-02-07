@@ -12,8 +12,6 @@ struct ImageGen {
     var authorName:String
     
     let imageConfigs = [
-        ImageConfig(idiom: .iphone, size: 60, scale: 3),
-        ImageConfig(idiom: .iphone, size: 60, scale: 2),
         ImageConfig(idiom: .iphone, size: 29, scale: 1),
         ImageConfig(idiom: .iphone, size: 29, scale: 2),
         ImageConfig(idiom: .iphone, size: 29, scale: 3),
@@ -21,7 +19,8 @@ struct ImageGen {
         ImageConfig(idiom: .iphone, size: 40, scale: 3),
         ImageConfig(idiom: .iphone, size: 60, scale: 2),
         ImageConfig(idiom: .iphone, size: 60, scale: 3),
-        ImageConfig(idiom: .iphone, size: 76, scale: 2),
+        ImageConfig(idiom: .iphone, size: 20, scale: 2),
+        ImageConfig(idiom: .iphone, size: 20, scale: 3),
         ImageConfig(idiom: .ipad, size: 20, scale: 1),
         ImageConfig(idiom: .ipad, size: 20, scale: 2),
         ImageConfig(idiom: .ipad, size: 29, scale: 1),
