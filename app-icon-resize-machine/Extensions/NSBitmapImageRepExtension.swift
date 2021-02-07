@@ -9,7 +9,7 @@ import Foundation
 import AppKit
 
 extension NSBitmapImageRep {
-    func imageWithFormat(for format: NSBitmapImageRep.FileType) -> Data? {
+    func converted(to format: NSBitmapImageRep.FileType) -> Data? {
         return representation(using: format, properties: [:])
     }
 }

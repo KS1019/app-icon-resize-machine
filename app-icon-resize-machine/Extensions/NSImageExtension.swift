@@ -29,7 +29,5 @@ extension NSImage {
         return nil
     }
     
-    var png : Data? { tiffRepresentation?.bitmap?.imageWithFormat(for: .png)  }
-    var jpeg: Data? { tiffRepresentation?.bitmap?.imageWithFormat(for: .jpeg) }
-    var gif : Data? { tiffRepresentation?.bitmap?.imageWithFormat(for: .gif)  }
+    var png : Data? { tiffRepresentation?.bitmapImageRep?.converted(to: .png) }
 }

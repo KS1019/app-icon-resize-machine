@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import AppKit
 
 extension Data {
-    var bitmap: NSBitmapImageRep? { NSBitmapImageRep(data: self) }
+    var bitmapImageRep: NSBitmapImageRep? { NSBitmapImageRep(data: self) }
 }
