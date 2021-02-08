@@ -9,25 +9,22 @@ import Foundation
 import AppKit
 
 extension NSImage {
-    func resized(to newSize: NSSize) -> NSImage? {
-        if let bitmapRep = NSBitmapImageRep(
-            bitmapDataPlanes: nil, pixelsWide: Int(newSize.width), pixelsHigh: Int(newSize.height),
+    func resized(to newSize: Int) -> NSImage? {
+        guard let bitmapRep = NSBitmapImageRep(
+            bitmapDataPlanes: nil, pixelsWide: newSize, pixelsHigh: newSize,
             bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false,
             colorSpaceName: .calibratedRGB, bytesPerRow: 0, bitsPerPixel: 0
-        ) {
-            bitmapRep.size = newSize
-            NSGraphicsContext.saveGraphicsState()
-            NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: bitmapRep)
-            draw(in: NSRect(x: 0, y: 0, width: newSize.width, height: newSize.height), from: .zero, operation: .copy, fraction: 1.0)
-            NSGraphicsContext.restoreGraphicsState()
-            
-            let resizedImage = NSImage(size: newSize)
-            resizedImage.addRepresentation(bitmapRep)
-            return resizedImage
-        }
+        ) else { return nil }
+
+        bitmapRep.size = NSSize(width: newSize, height: newSize)
+        NSGraphicsContext.saveGraphicsState()
+        NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: bitmapRep)
+        draw(in: NSRect(x: 0, y: 0, width: newSize, height: newSize), from: .zero, operation: .copy, fraction: 1.0)
+        NSGraphicsContext.restoreGraphicsState()
         
-        return nil
+        let resizedImage = NSImage(size: NSSize(width: newSize, height: newSize))
+        resizedImage.addRepresentation(bitmapRep)
+        return resizedImage
     }
-    
     var png : Data? { tiffRepresentation?.bitmapImageRep?.converted(to: .png) }
 }

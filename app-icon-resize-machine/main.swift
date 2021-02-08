@@ -61,7 +61,7 @@ struct ResizeMachine: ParsableCommand {
         let imageConfig = ImageGen(appName: (appName ?? ""), authorName: (authorName ?? ""))
         for config in imageConfig.imageConfigs {
             let size = config.size * config.scale
-            guard let resized = basePNGFile?.resized(to: NSSize(width: size, height: size)) else { print("Error");return }
+            guard let resized = basePNGFile?.resized(to: Int(size)) else { print("Error");return }
             var sizeAtrr: String
             let scaleStr = String(format: "%.0f", config.scale)
             let sizeStr = String(format: "%.0f", config.size)

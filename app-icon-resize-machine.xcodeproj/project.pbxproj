@@ -13,19 +13,20 @@
 		7C2324E925D010D8001808B0 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2324E825D010D8001808B0 /* DataExtension.swift */; };
 		7C2324EC25D01119001808B0 /* NSBitmapImageRepExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2324EB25D01119001808B0 /* NSBitmapImageRepExtension.swift */; };
 		7C39C93B25BEB7AA000AE63E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C39C93A25BEB7AA000AE63E /* main.swift */; };
-		7C39C94225BEB827000AE63E /* app-icon-resize-machine in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C39C93725BEB7AA000AE63E /* app-icon-resize-machine */; };
+		7C39C94225BEB827000AE63E /* app-icon-resize-machine in Copy Files */ = {isa = PBXBuildFile; fileRef = 7C39C93725BEB7AA000AE63E /* app-icon-resize-machine */; };
 		7C39C94925BEB8FD000AE63E /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7C39C94825BEB8FD000AE63E /* ArgumentParser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7C39C93525BEB7AA000AE63E /* CopyFiles */ = {
+		7C39C93525BEB7AA000AE63E /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
 			dstPath = /usr/local/bin;
 			dstSubfolderSpec = 0;
 			files = (
-				7C39C94225BEB827000AE63E /* app-icon-resize-machine in CopyFiles */,
+				7C39C94225BEB827000AE63E /* app-icon-resize-machine in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -98,7 +99,7 @@
 			buildPhases = (
 				7C39C93325BEB7AA000AE63E /* Sources */,
 				7C39C93425BEB7AA000AE63E /* Frameworks */,
-				7C39C93525BEB7AA000AE63E /* CopyFiles */,
+				7C39C93525BEB7AA000AE63E /* Copy Files */,
 			);
 			buildRules = (
 			);
