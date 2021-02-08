@@ -55,9 +55,7 @@ struct ResizeMachine: ParsableCommand {
         write(contents: contents, to: URL(string: currentPath + "\(appName ?? "App").appiconset/" + "Contents.json")!)
     }
     
-    func run() throws {
-        basePNGFile = NSImage(contentsOf: URL(string: currentPath + iconFileName)!)
-        createDir()
+    func createResizeImages() {
         let imageConfig = ImageGen(appName: (appName ?? ""), authorName: (authorName ?? ""))
         for config in imageConfig.imageConfigs {
             let size = config.size * config.scale
@@ -87,7 +85,12 @@ struct ResizeMachine: ParsableCommand {
                 print(error)
             }
         }
-        
+    }
+    
+    func run() throws {
+        basePNGFile = NSImage(contentsOf: URL(string: currentPath + iconFileName)!)
+        createDir()
+        createResizeImages()
         writeJSON()
     }
 }
