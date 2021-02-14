@@ -8,9 +8,9 @@ This is a command line tool to generate .appiconset file from one .png file.
 - TBA
 
 # TODOs
-- Supports macOS, watchOS.
-- Add error handling when creating the file.
-- Add filename completion if possible.
+-[ ] Supports macOS, watchOS.
+-[ ] Add error handling when creating the file.
+-[ ] Add filename completion if possible.
 
 # References
 - [App Icon - developer.apple.com](https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/app-icon/)
