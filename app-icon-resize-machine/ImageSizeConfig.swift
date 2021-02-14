@@ -35,13 +35,7 @@ struct ImageGen {
 }
 
 struct ImageConfig {
-    var idiom: Devices
+    var idiom: Platform
     var size: Double
     var scale: Double
-
-    enum Devices: String {
-        case iphone
-        case ipad
-        case ios_marketing = "ios-marketing"
-    }
 }
