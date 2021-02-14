@@ -104,3 +104,9 @@ struct ResizeMachine: ParsableCommand {
 }
 
 ResizeMachine.main()
+
+enum Platform: String, ExpressibleByArgument {
+    case iphone, ipad, watch, mac, car
+    case ios_marketing = "ios-marketing"
+    case watch_marketing = "watch-marketing"
+}
