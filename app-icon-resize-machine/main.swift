@@ -24,13 +24,13 @@ struct ResizeMachine: ParsableCommand {
         shouldDisplay: true,
         helpNames: [.long, .short])
     
-    @Argument(help: "An .png file to be used for the Appicon file")
+    @Option(help: "An .png file to be used for the Appicon file", completion: .file())
     var iconFileName: String
     
-    @Argument(help: "App name to be used in names of icon files")
+    @Option(help: "App name to be used in names of icon files")
     var appName: String?
     
-    @Argument(help: "Name to be used as an author")
+    @Option(help: "Name to be used as an author")
     var authorName: String?
 
     func createDir() {
