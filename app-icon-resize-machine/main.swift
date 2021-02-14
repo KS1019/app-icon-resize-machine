@@ -46,8 +46,16 @@ struct ResizeMachine: ParsableCommand {
     func write(contents: Contents, to: URL) {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        let encoded = try! encoder.encode(contents)
-        try! encoded.write(to: to)
+        do {
+            let encoded = try encoder.encode(contents)
+            do {
+                try encoded.write(to: to)
+            } catch let error {
+                print("Error : \(error)")
+            }
+        } catch let error {
+            print("Error : \(error)")
+        }
     }
     
     func writeJSON() {
