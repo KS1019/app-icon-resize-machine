@@ -28,13 +28,13 @@ struct ResizeMachine: ParsableCommand {
     var iconFileName: String
     
     @Option(help: "App name to be used in names of icon files")
-    var appName: String?
+    var appName: String = "App"
     
     @Option(help: "Name to be used as an author")
-    var authorName: String?
+    var authorName: String = "Developer"
 
     func createDir() {
-        let finalFilePath = currentPath + (appName ?? "App") + ".appiconset"
+        let finalFilePath = currentPath + appName + ".appiconset"
         do {
             try FileManager.default.createDirectory(at: URL(string: finalFilePath)!,
                                                     withIntermediateDirectories: true, attributes: nil)
@@ -51,12 +51,12 @@ struct ResizeMachine: ParsableCommand {
     }
     
     func writeJSON() {
-        let contents = Contents(images: imagesJSON, info: Info(version: 1, author: authorName ?? "App"))
-        write(contents: contents, to: URL(string: currentPath + "\(appName ?? "App").appiconset/" + "Contents.json")!)
+        let contents = Contents(images: imagesJSON, info: Info(version: 1, author: authorName))
+        write(contents: contents, to: URL(string: currentPath + appName + ".appiconset/" + "Contents.json")!)
     }
     
     func createResizeImages() {
-        let imageConfig = ImageGen(appName: (appName ?? ""), authorName: (authorName ?? ""))
+        let imageConfig = ImageGen(appName: appName, authorName: authorName)
         for config in imageConfig.imageConfigs {
             let size = config.size * config.scale
             guard let resized = basePNGFile?.resized(to: Int(size)) else { print("Error");return }
@@ -80,7 +80,7 @@ struct ResizeMachine: ParsableCommand {
                                         filename: filename))
             }
             do {
-                try resized.png?.write(to: URL(string: currentPath + "\(appName ?? "App").appiconset/" + filename)!)
+                try resized.png?.write(to: URL(string: currentPath + "\(appName).appiconset/" + filename)!)
             } catch let error {
                 print(error)
             }
