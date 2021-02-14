@@ -24,7 +24,7 @@ struct ResizeMachine: ParsableCommand {
         shouldDisplay: true,
         helpNames: [.long, .short])
     
-    @Option(help: "An .png file to be used for the Appicon file", completion: .file())
+    @Option(help: "An .png file to be used for the Appicon file", completion: .file(extensions:["png"]))
     var iconFileName: String
     
     @Option(help: "App name to be used in names of icon files")
